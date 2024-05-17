@@ -13,13 +13,16 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['Home', 'About', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+ const navigate = useNavigate();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -42,6 +45,20 @@ function Header() {
 
     setOpen(newOpen);
   };
+
+  const handleLinkPage = (page: string) => {
+    console.log('link page');
+    // location.href = `/${
+    //   page === 'Home' ? '' : page.toLowerCase()
+    // }`;
+
+    navigate(`/${
+      page === 'Home' ? '' : page.toLowerCase()
+    }`);
+
+    
+
+  }
 
   return (
     <AppBar position="static">
@@ -99,7 +116,7 @@ function Header() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={()=>handleLinkPage(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -128,7 +145,7 @@ function Header() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>handleLinkPage(page)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
