@@ -4,8 +4,12 @@ import ComboBox from "./components/ComboBox";
 import Container from "@mui/material/Container";
 import { ButtonGroup } from "@mui/material";
 import Header from "./components/Header";
+import ObjectComponent from "./components/ObjectComponent";
 
 function App() {
+
+
+
   return (
     <>
       <Header />
@@ -31,6 +35,9 @@ function App() {
           <Button>Two</Button>
           <Button>Three</Button>
         </ButtonGroup>
+
+
+        <ObjectComponent />
       </Container>
     </>
   );
