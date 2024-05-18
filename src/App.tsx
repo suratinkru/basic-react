@@ -7,6 +7,7 @@ import {
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Layouts from "./layouts/Layouts";
+import React from "react";
 
 
 const BrowserRouter = createBrowserRouter([
@@ -19,6 +20,10 @@ const BrowserRouter = createBrowserRouter([
 
 
 function App() {
+  React.useEffect(() => {
+    console.log('App');
+    
+  }, []);
   return (
    <RouterProvider router={BrowserRouter} />
   )

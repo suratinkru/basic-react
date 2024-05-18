@@ -6,6 +6,10 @@ type Props = {
 }
 
 const Layouts: React.FC<Props> = ({children}) => {
+  React.useEffect(() => {
+    console.log('Layouts');
+    
+  }, [])
   return (
    <>
     <Header />

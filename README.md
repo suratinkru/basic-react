@@ -28,3 +28,34 @@ export default {
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+site effect 
+หมายถึงการกระทำที่ส่งผลกระทบภายนอกต่อฟังก์ชันที่กำลังทำงาน ซึ่งไม่ได้เกี่ยวข้องกับการคำนวณและการคืนค่าผลลัพธ์โดยตรง เช่น การดึงข้อมูลจาก API, การตั้งค่า subscriptions, การแก้ไข DOM, การเขียน log, หรือการตั้งค่า timers
+
+useEffect เป็น Hook ใน React ที่ใช้สำหรับจัดการ side effect ใน component ของ React ฟังก์ชัน 
+useEffect จะถูกรันหลังจากที่ React ทำการ render component แล้ว ซึ่งทำให้เราสามารถทำการอัปเดต DOM, fetch ข้อมูลจาก API, ตั้งค่า subscription หรือทำการ clean up ต่างๆ ได้
+
+
+
+  useEffect(() => {
+    
+  }, []);
+
+  useEffect(() => {
+    
+  });
+
+  useEffect(() => {
+    
+  }, [data]);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1000); // อัปเดตทุก 1 วินาที
+
+    // ทำการ clean-up เมื่อคอมโพเนนต์ unmount
+    return () => clearInterval(interval);
+  }, []); // รันครั้งเดียวเมื่อคอมโพเนนต์ mount
